@@ -16,6 +16,9 @@ export default {
     if (pathname.startsWith('/session/minecraft/hasJoined')) {
       return hasJoined(request, env, ctx);
     }
+    if (pathname.startsWith('//session/minecraft/hasJoined')) {
+      return hasJoined(request, env, ctx);
+    }
     
     const response = await mitm(request);
     const body = await response.text();
@@ -109,6 +112,7 @@ async function hasJoined(request: Request, env: Environment, ctx: ExecutionConte
       profileActions: []
     };
     const body = JSON.stringify(response);
+    console.log(body);
 
     return new Response(body, {
       status: 200,
@@ -126,6 +130,7 @@ async function hasJoined(request: Request, env: Environment, ctx: ExecutionConte
     // fallback to mojang
     const response = await mitm(request);
     const body = await response.text();
+    console.log(body);
 
     return new Response(body, {
       status: response.status,
