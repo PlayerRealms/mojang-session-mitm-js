@@ -1,0 +1,14 @@
+name = "mojang-session-mitm"
+main = "./dist/index.mjs"
+compatibility_date = "2023-12-19"
+workers_dev = true
+usage_model = "bundled"
+
+[build]
+command = "npm install && npm run build && cp ./src/driver/**/*.wasm ./dist"
+
+[vars]
+CF_CLIENT_ID = "ea221a177a5eccf92d6b6c1c8d47fa85.access"
+DB_HOST = "https://db.playerrealms.com"
+DB_NAME = "hub"
+DB_USERNAME = "cfworker"
